@@ -3,69 +3,169 @@
 <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 
 <script>
-  // p5js sketch in instance mode - https://p5js.org/examples/instance-mode-instance-container.html
-  let sketch = function(p) {
-    p.setup = function() {
-      p.noCanvas();
-      let cnv = p.createCanvas(100, 100);
-      cnv.id("test"); // you need to set this because you'll use it in the a-frame component
-      cnv.hide();
-      // draw things at init
-      p.background(255, 255, 0);
-    };
+    // p5js sketch in instance mode - https://p5js.org/examples/instance-mode-instance-container.html
+    let sketch = function (p) {
+        p.setup = function () {
+            p.noCanvas();
+            let cnv = p.createCanvas(100, 100);
+            cnv.id("test"); // you need to set this because you'll use it in the a-frame component
+            cnv.hide();
+            // draw things at init
+            p.background(255, 255, 0);
+        };
 
-    p.draw = function() {
-      // draw animations
-      p.background(p.random(255), p.random(255), p.random(255));
-      for (let i = 0; i < 100; i++) {
-        let rad = p.random(5, 25);
-        p.fill(p.random(255), 0, 255);
-        p.noStroke();
-        p.ellipse(p.random(p.width), p.random(p.height), rad, rad);
-      }
+        p.draw = function () {
+            // draw animations
+            p.background(p.random(255), p.random(255), p.random(255));
+            for (let i = 0; i < 100; i++) {
+                let rad = p.random(5, 25);
+                p.fill(p.random(255), 0, 255);
+                p.noStroke();
+                p.ellipse(p.random(p.width), p.random(p.height), rad, rad);
+            }
+        };
     };
-  };
-  new p5(sketch, "container"); // bind the canvas to a div in the body
+    new p5(sketch, "container"); // bind the canvas to a div in the body
 </script>
 
 <script>
-  // aframe component
-  AFRAME.registerComponent("draw-canvas", {
-    init() {
-      setTimeout(() => {
-        this.el.setAttribute("material", { src: "#test" }); // every element of the scene that has this component will use the canvas ided as "test" for its texture
-      }, 500);
-    },
-    tick() {
-      var el = this.el;
-      var material;
-      material = el.getObject3D("mesh").material;
-      if (!material.map) {
-        // console.log("no material")
-        return;
-      } else {
-        // console.log("have material")
-      }
-      material.map.needsUpdate = true;
-    }
-  });
+    // aframe component
+    AFRAME.registerComponent("draw-canvas", {
+        init() {
+            setTimeout(() => {
+                this.el.setAttribute("material", { src: "#test" }); // every element of the scene that has this component will use the canvas ided as "test" for its texture
+            }, 500);
+        },
+        tick() {
+            var el = this.el;
+            var material;
+            material = el.getObject3D("mesh").material;
+            if (!material.map) {
+                // console.log("no material")
+                return;
+            } else {
+                // console.log("have material")
+            }
+            material.map.needsUpdate = true;
+        }
+    });
 </script>
 
-<body style="margin : 0px; overflow: hidden;">
-  <div id="container"></div>
-  <a-scene embedded arjs="sourceType: webcam;" start>
-    <a-marker preset="kanji">
-      <a-plane
-        width="6"
-        height="6"
-        position="0 0 0"
-        material="shader: flat;"
-        draw-canvas
-      >
-      </a-plane>
-    </a-marker>
+<script>
+    // p5js sketch in instance mode - https://p5js.org/examples/instance-mode-instance-container.html
+    let sketch2 = function (p) {
+        p.setup = function () {
+            p.noCanvas();
+            let cnv = p.createCanvas(100, 100);
+            cnv.id("test2"); // you need to set this because you'll use it in the a-frame component
+            cnv.hide();
+            // draw things at init
+            p.background(255, 255, 255);
+           // console.log("ok")
+        };
 
-    <!-- add a simple camera -->
-    <a-entity camera></a-entity>
-  </a-scene>
+        p.draw = function () {
+            // draw animations
+            p.background(p.random(255), p.random(255), p.random(255));
+           // console.log("yeah")
+            for (let i = 0; i < 100; i++) {
+                let rad = p.random(5, 25);
+                p.fill(0, p.random(255), 255);
+                p.noStroke();
+                p.rect(p.random(p.width), p.random(p.height), rad, rad);
+            }
+        };
+    };
+    new p5(sketch2, "container2"); // bind the canvas to a div in the body
+</script>
+
+<script>
+    // aframe component
+    AFRAME.registerComponent("draw-canvas2", {
+        init() {
+            setTimeout(() => {
+                this.el.setAttribute("material", { src: "#test2" }); // every element of the scene that has this component will use the canvas ided as "test" for its texture
+            }, 500);
+        },
+        tick() {
+            var el = this.el;
+            var material;
+            material = el.getObject3D("mesh").material;
+            if (!material.map) {
+                // console.log("no material")
+                return;
+            } else {
+                // console.log("have material")
+            }
+            material.map.needsUpdate = true;
+        }
+    });
+</script>
+
+
+
+
+<body style="margin : 0px; overflow: hidden;">
+    <div id="container"></div>
+    <div id="container2"></div>
+    <a-scene embedded arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; detectionMode: mono_and_matrix; matrixCodeType: 3x3" start>
+        <a-marker preset="kanji">
+            <a-plane width="2" height="2" position="0 0 0" material="shader: flat;" draw-canvas>
+            </a-plane>
+        </a-marker>
+
+        <a-marker preset="hiro">
+            <a-plane width="2" height="2" position="0 0 0" material="shader: flat;" draw-canvas2>
+            </a-plane>
+        </a-marker>
+
+        <a-marker type="pattern" url="./custom_marker.patt">
+            <a-entity text="value: Hello World;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="0">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 0;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="7">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 7;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="42">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 42;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="51">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 51;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="35">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 35;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="44">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 44;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="9">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 9;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="16">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 16;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="13">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 13;"></a-entity>
+        </a-marker>
+
+        <a-marker type="barcode" value="63">
+            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 63;"></a-entity>
+        </a-marker>
+
+
+
+        <!-- add a simple camera -->
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
