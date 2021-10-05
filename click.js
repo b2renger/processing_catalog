@@ -12,7 +12,7 @@ AFRAME.registerComponent('clickhandler', {
     addListeners: function () {
         //console.log("add listeners fired")
         this.el.addEventListener('click', e => {
-            console.log("lkjez")
+           // console.log("lkjez")
             //window.location.href = 'https://linktr.ee/b2renger'
             window.open('https://www.linktr.ee/b2renger', '_blank').focus();
            // alert('Clicked!')
@@ -92,7 +92,7 @@ AFRAME.registerComponent("cursor-modifier", {
                 event.stopPropagation();
             }
             window.addEventListener("mousedown", mousedown, false);
-            //window.addEventListener('touchstart', mousedown, false);
+            window.addEventListener('touchstart', mousedown, false);
         });
     }
 });
