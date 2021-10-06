@@ -48,10 +48,19 @@
 
         <a-marker type="barcode" value="42">
             <a-box width="1" height="1" position="0 0 0" material="shader: flat;" 
-            rotation="0 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 2500; easing:linear;"
+            rotation="0 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 5000; easing:linear;"
             draw-canvas2>
             </a-box>
         </a-marker>
+
+        <a-marker type="barcode" value="53">
+            <a-box width="1" height="1" position="0 0 0" material="shader: flat;" 
+            rotation="0 0 0" animation="property: rotation; to: 0 360 360; loop: true; dur: 10000; easing:linear;"
+            draw-canvas1>
+            </a-box>
+            <!--<a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 53;"></a-entity>-->
+        </a-marker>
+
 
         <a-marker type="barcode" value="0">
             <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 0;"></a-entity>
@@ -77,10 +86,7 @@
             <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 13;"></a-entity>
         </a-marker>
 
-        <a-marker type="barcode" value="53">
-            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 53;"></a-entity>
-        </a-marker>
-
+       
 
 
         <!-- add a simple camera -->

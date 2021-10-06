@@ -7,21 +7,29 @@ let sketch2 = function (p) {
         let cnv = p.createCanvas(200, 200);
         cnv.id("test2"); // you need to set this because you'll use it in the a-frame component
         cnv.hide();
-
+        //p.background(0)
     };
 
     p.draw = function () {
-        incr++
+        p.clear()
+        incr += 2
 
         p.noStroke();
-        if (state == 0) p.fill(255)
-        if (state == 1) p.fill(0)
+        p.noFill();
+        p.strokeWeight(5)
+        if (state == 0) p.stroke(255)
+        if (state == 1) p.stroke(255, 255, 0)
+        if (state == 2) p.stroke(255, 0, 0)
+        for (let i = 0; i < 5; i++) {
+            let r = p.constrain( incr - 50 * i, 0, 300)
+            p.ellipse(p.width * .5, p.height * .5, r, r)
+        }
 
-        p.ellipse(p.width * .5, p.height * .5, incr, incr)
 
-        if (incr > 300) {
+        if (incr > 500) {
             if (state == 0) { state = 1 }
-            else { state = 0 }
+            else if (state == 1) { state = 2 }
+            else if (state == 2) { state = 0 }
             incr = 0
         }
 
