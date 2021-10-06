@@ -21,8 +21,6 @@ let sketch = function (p) {
     };
 };
 new p5(sketch, "container"); // bind the canvas to a div in the body
-
-
  // aframe component
  AFRAME.registerComponent("draw-canvas", {
     init() {

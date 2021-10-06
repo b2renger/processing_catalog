@@ -14,7 +14,7 @@ AFRAME.registerComponent('clickhandler', {
         this.el.addEventListener('click', e => {
            // console.log("lkjez")
             //window.location.href = 'https://linktr.ee/b2renger'
-            window.open('https://www.linktr.ee/b2renger', '_blank').focus();
+            //window.open('https://www.linktr.ee/b2renger', '_blank').focus();
            // alert('Clicked!')
         });
 

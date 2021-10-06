@@ -6,20 +6,26 @@
         cnv.id("test2"); // you need to set this because you'll use it in the a-frame component
         cnv.hide();
         // draw things at init
-        p.background(255, 255, 255);
+        //p.background(255, 255, 255);
         // console.log("ok")
     };
 
     p.draw = function () {
+        p.clear()
+        let t = p.map(p.sin(p.millis()/1000.), -1, 1, 0, 100)
+        p.fill(255, 0,0)
+        p.ellipse(p.width*.5, p.height*.5, t, t)
         // draw animations
-        p.background(p.random(255), p.random(255), p.random(255));
+        //p.background(p.random(255), p.random(255), p.random(255));
         // console.log("yeah")
+        /*
         for (let i = 0; i < 100; i++) {
             let rad = p.random(5, 25);
-            p.fill(0, p.random(255), 255);
+            p.fill(0, p.random(255), 255, 10);
             p.noStroke();
             p.rect(p.random(p.width), p.random(p.height), rad, rad);
-        }
+        }*/
+        
     };
 };
 new p5(sketch2, "container2"); // bind the canvas to a div in the body
