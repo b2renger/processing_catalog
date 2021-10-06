@@ -1,28 +1,39 @@
 // p5js sketch in instance mode - https://p5js.org/examples/instance-mode-instance-container.html
 let sketch = function (p) {
+    let seed = p.random(9999)
     p.setup = function () {
         p.noCanvas();
-        let cnv = p.createCanvas(100, 100);
+        let cnv = p.createCanvas(200, 200);
         cnv.id("test"); // you need to set this because you'll use it in the a-frame component
         cnv.hide();
         // draw things at init
-        p.background(255, 255, 0);
+        //p.background(255, 255, 0);
+
     };
 
     p.draw = function () {
-        // draw animations
-        p.background(p.random(255), p.random(255), p.random(255));
-        for (let i = 0; i < 100; i++) {
-            let rad = p.random(5, 25);
-            p.fill(p.random(255), 0, 255);
-            p.noStroke();
-            p.ellipse(p.random(p.width), p.random(p.height), rad, rad);
+        p.randomSeed(seed)
+        let step = 20
+        p.clear()
+        p.stroke(255, 0, 0)
+        p.strokeWeight(5)
+        for (let i = 0 ; i < p.width ; i += step){
+            for(let j = 0 ; j < p.height ; j +=step){
+
+                if (p.random(1)> 0.5){
+                    p.line (i,j, i+step, j +step)
+                }
+                else{
+                    p.line(i, j+step, i +step, j)
+                }
+            }
         }
+       
     };
 };
 new p5(sketch, "container"); // bind the canvas to a div in the body
  // aframe component
- AFRAME.registerComponent("draw-canvas", {
+ AFRAME.registerComponent("draw-canvas1", {
     init() {
         setTimeout(() => {
             this.el.setAttribute("material", { src: "#test" }); // every element of the scene that has this component will use the canvas ided as "test" for its texture
