@@ -4,6 +4,9 @@
 <script src="click.js"></script>
 <script src="p5js_sketch1.js"></script>
 <script src="p5js_sketch2.js"></script>
+<script src="p5js_sketch3.js"></script>
+<script src="p5js_sketch4.js"></script>
+
 
 
 
@@ -12,6 +15,8 @@
     <!-- hidden containers to run p5js programs-->
     <div id="container"></div>
     <div id="container2"></div>
+    <div id="container3"></div>
+    <div id="container4"></div>
 
     <!-- actuall a-frame + Arjs scene -->
     <a-scene embedded
@@ -39,6 +44,7 @@
             <img id="my-image" src="1818874_white.png">
         </a-assets>
 
+        <!-- LINK TO LINKTREE with ressources -->
         <a-marker type="barcode" value="16" >
             <a-link href="https://www.linktr.ee/b2renger" title="Click me !" scale=".051 .051 .051"  >
             </a-link>
@@ -46,31 +52,37 @@
             <a-entity  text="align: center; width: 6; anchor:center; color:white; value: click me !;font:https://cdn.aframe.io/fonts/Exo2Bold.fnt;"position="0 1 0"  ></a-entity>     
         </a-marker>
 
+        <!-- Sketches mapped on boxes -->
         <a-marker type="barcode" value="42">
             <a-box width="1" height="1" position="0 0 0" material="shader: flat;" 
             rotation="0 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 5000; easing:linear;"
-            draw-canvas2>
+            draw-canvas1>
             </a-box>
         </a-marker>
 
         <a-marker type="barcode" value="53">
             <a-box width="1" height="1" position="0 0 0" material="shader: flat;" 
             rotation="0 0 0" animation="property: rotation; to: 0 360 360; loop: true; dur: 10000; easing:linear;"
-            draw-canvas1>
+            draw-canvas2>
             </a-box>
             <!--<a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 53;"></a-entity>-->
         </a-marker>
 
-
-        <a-marker type="barcode" value="0">
-            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 0;"></a-entity>
+        <a-marker type="barcode" value="9">
+            <a-box  scale="1 1 1" position="0 0 0" material="shader: flat;" 
+            rotation="0 0 0" animation="property: rotation; to: 0 360 360; loop: true; dur: 10000; easing:linear;"
+            draw-canvas3>
+            </a-box >
+            <!--<a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 9;"></a-entity>-->
         </a-marker>
 
 
-  
-
-        <a-marker type="barcode" value="9">
-            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 9;"></a-entity>
+        <a-marker type="barcode" value="0">
+            <a-plane  scale="1.5 1.5 1.5" position="0 0 0" material="shader: flat;" 
+            
+            draw-canvas4>
+            </a-plane >
+           <!-- <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 0;"></a-entity>-->
         </a-marker>
 
         <a-marker type="barcode" value="23">
