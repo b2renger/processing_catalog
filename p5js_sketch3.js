@@ -15,13 +15,13 @@ let sketch3 = function (p) {
         p.rectMode(p.CENTER)
         p.background(255)
         p.noStroke();
-
+        p.colorMode(p.HSB, 360, 100, 100)
 
         for (let i = 0; i < 6; i++) {
             let b = p.map(i, 0, 5, 0, 16)
             let xOffset = p.map(p.noise(p.millis() / 2000., 12, 43), 0, 1, -5*b, 5*b)
             let yOffset = p.map(p.noise(p.millis() / 2000., 11, 87), 0, 1, -5*b, 5*b)
-            p.fill(255, p.map(i, 0, 6, 200, 0), p.map(i, 0, 6, 200, 0))
+            p.fill(0, 100, p.map(i, 0, 6, 00, 100))
             p.rect(p.width * .5 + xOffset, p.height * .5 + yOffset, 200 - i * 33, 200 - i * 33)
         }
 

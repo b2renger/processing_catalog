@@ -11,16 +11,23 @@ let sketch2 = function (p) {
     };
 
     p.draw = function () {
-        p.clear()
+        p.background(0,25)
         incr += 2
 
         p.noStroke();
         p.noFill();
         p.strokeWeight(5)
         if (state == 0) p.stroke(255)
-        if (state == 1) p.stroke(255, 255, 0)
-        if (state == 2) p.stroke(255, 0, 0)
+        if (state == 1) p.stroke(255, 0, 0)
         for (let i = 0; i < 5; i++) {
+
+
+            if(i%2 ==0){
+                p.stroke(255) 
+            }
+            else {
+                p.stroke(255, 0, 0)
+            }
             let r = p.constrain( incr - 50 * i, 0, 300)
             p.ellipse(p.width * .5, p.height * .5, r, r)
         }
@@ -28,8 +35,8 @@ let sketch2 = function (p) {
 
         if (incr > 500) {
             if (state == 0) { state = 1 }
-            else if (state == 1) { state = 2 }
-            else if (state == 2) { state = 0 }
+            else if (state == 1) { state = 0 }
+    
             incr = 0
         }
 
