@@ -7,6 +7,8 @@
 <script src="p5js_sketch3.js"></script>
 <script src="p5js_sketch4.js"></script>
 <script src="p5js_sketch5.js"></script>
+<script src="p5js_sketch6.js"></script>
+
 
 
 
@@ -19,6 +21,8 @@
     <div id="container3"></div>
     <div id="container4"></div>
     <div id="container5"></div>
+    <div id="container6"></div>
+
 
 
     <!-- actuall a-frame + Arjs scene -->
@@ -53,7 +57,7 @@
         <a-marker type="barcode" value="16" >
             <a-link href="https://www.linktr.ee/b2renger" title="Click me !" scale=".051 .051 .051"  >
             </a-link>
-            <a-image src="#my-image"position="0 0 0.05"  rotation="0 0 0" animation="property: rotation; to: 0 0 360; loop: true; dur: 10000; easing:linear;"  ></a-image>  
+            <a-image scale=" 1.5 1.5 1.5"   src="#my-image" position="0 0 0.05"  rotation="0 0 0" animation="property: rotation; to: 0 0 360; loop: true; dur: 10000; easing:linear;"  ></a-image>  
             <a-entity  text="align: center; width: 6; anchor:center; color:white; value: click me !;font:https://cdn.aframe.io/fonts/Exo2Bold.fnt;"position="0 1 0"  ></a-entity>     
         </a-marker>
 
@@ -90,10 +94,9 @@
         </a-marker>
 
         <a-marker type="barcode" value="23">
-            <a-plane  scale="1. 1. 1." width="9"  height="13" position="-3 0 -10" rotation="0 0 26" material="shader: flat;" color="white">   
-            
+            <a-plane  scale="1. 1. 1." width="4.5"  height="7" position="-1.5 3 0" rotation="0 0 28" material="shader: flat;"  draw-canvas6>   
             </a-plane >
-            <a-entity text="align: center; width: 6; anchor:center; color:red; value: Hello 23;"></a-entity>
+            
         </a-marker>
 
         <a-marker type="barcode" value="44">
