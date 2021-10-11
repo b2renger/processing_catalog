@@ -29,13 +29,13 @@ let sketch6 = function (p) {
     p.draw = function () {
         //p.background(0)
         p.push()
-        p.rectMode(1)
-        p.imageMode(1)
+        p.rectMode(p.CENTER)
+        p.imageMode(p.CENTER)
         p.noStroke()
         p.fill(255)
         p.translate(x, y)
         p.rotate(p.millis() / rspeed)
-        p.rect(-1, -1, 52, 52)
+        p.rect(0, 0, 52, 52)
         p.image(img, 0, 0, 50, 50)
 
         p.pop()
@@ -44,15 +44,19 @@ let sketch6 = function (p) {
         x += xspeed;
         y += yspeed;
 
-        if (x < 50 || x > p.width - 50) { 
+        if (x < 50 || x > p.width - 50) {
             xspeed *= -1
             //rspeed = p.random(500, 1500) * (p.random(1)>.5 ? 1 : -1)
-         }
-        if (y < 50 || y > p.height - 50) { 
+        }
+        if (y < 50 || y > p.height - 50) {
             yspeed *= -1
             //rspeed = p.random(500, 1500) * (p.random(1)>.5 ? 1 : -1)
-         }
+        }
     }
+
+
+
+
 
 };
 new p5(sketch6, "container6"); // bind the canvas to a div in the body
